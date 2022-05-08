@@ -21,7 +21,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'personaname'
     ];
+
+    protected $attributes = [
+        'avatarfull' => 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/86/86a0c845038332896455a566a1f805660a13609b_full.jpg',
+        'rights' => 0,
+        'likes_balance' => 0,
+        'wallet_balance' => 0,
+        'wallet_total_refilled' => 0,
+        'wallet_total_withdrawn' => 0
+    ];
+
 
     /**
      * The attributes that should be hidden for serialization.
