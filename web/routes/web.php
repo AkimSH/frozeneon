@@ -24,7 +24,8 @@ Route::group([
     'prefix' => 'ajax'
 ], function () {
     Route::get('get_all_posts', [PostController::class, 'getAllPosts']);
-    Route::get('get_boosterpacks', [BoosterpackController::class, 'get']);
+    Route::get('get_boosterpacks', [BoosterpackController::class, 'getBoosterpacks']);
+    Route::get('post/{post_id}', [PostController::class, 'getPostById']);
 });
 
 Route::get('test', function (){
