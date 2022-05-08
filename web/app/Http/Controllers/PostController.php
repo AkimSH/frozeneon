@@ -18,4 +18,17 @@ class PostController extends Controller
 
         return response()->json(['status' => 'success', 'posts' =>$post->toArray()]);
     }
+
+    public function getPostById($post_id)
+    {
+        $post = Post::query()
+            ->where('id', $post_id)
+            ->with(['user' => function ($query) {
+                $query->select('id', 'avatarfull', 'personaname');
+            }])
+            ->first();
+
+
+        return response()->json(['post' => $post]);
+    }
 }

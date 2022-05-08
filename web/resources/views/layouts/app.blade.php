@@ -77,7 +77,7 @@ use Model\User_model;
                         <div class="name">@{{post.user.personaname}}</div>
                     </div>
                     <div class="card mb-3">
-                        <div class="post-img" v-bind:style="{ backgroundImage: 'url(' + post.img + ')' }"></div>
+                        <div class="post-img" v-bind:style="{ backgroundImage: 'url(images' + post.img + ')' }"></div>
                         <div class="card-body">
                             <div class="likes" @click="addLike('post', post.id)">
                                 <div class="heart-wrap" v-if="!likes">
@@ -181,7 +181,7 @@ use Model\User_model;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-<script src="{{ asset('js/app.js') }}?v=123456"></script>
+<script src="{{ asset('js/app.js') }}?v=12345677"></script>
 </body>
 </html>
 
