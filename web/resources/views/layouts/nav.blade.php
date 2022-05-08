@@ -5,17 +5,25 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <li class="nav-item">
+
                 @if(\Illuminate\Support\Facades\Auth::user())
-                    <a href="/main_page/logout" class="btn btn-primary my-2 my-sm-0"
+                <li class="nav-item">
+                    <a href="ajax/logout" class="btn btn-primary my-2 my-sm-0"
                        data-target="#loginModal">Log out, {{ \Illuminate\Support\Facades\Auth::user()->personaname }}
                     </a>
+                </li>
                 @else
+                <li class="nav-item">
                     <button type="button" class="btn btn-success my-2 my-sm-0" type="submit" data-toggle="modal"
                             data-target="#loginModal">Log IN
                     </button>
+                </li>
+                <li class="nav-item">
+                    <a href="/registration" class="btn btn-primary my-2 my-sm-0"
+                       data-target="#loginModal">Registration
+                    </a>
+                </li>
                 @endif
-            </li>
             <li class="nav-item">
                 @if(\Illuminate\Support\Facades\Auth::user())
                     <button type="button" class="btn btn-success my-2 my-sm-0" type="submit" data-toggle="modal"
@@ -26,7 +34,7 @@
             <li class="nav-item">
                 @if(\Illuminate\Support\Facades\Auth::user())
                     <a href="" role="button">
-                        Likes:
+                        Likes: {{ Auth::user()->likes_balance }}
                     </a>
                 @endif
             </li>

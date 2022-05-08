@@ -54,10 +54,10 @@ var app = new Vue({
 				self.invalidPass = false
 
 				form = new FormData();
-				form.append("login", self.login);
+				form.append("email", self.login);
 				form.append("password", self.pass);
 
-				axios.post('/main_page/login', form)
+				axios.post('ajax/login', form)
 					.then(function (response) {
 						if(response.data.user) {
 							location.reload();
