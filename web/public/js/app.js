@@ -117,7 +117,7 @@ var app = new Vue({
 		},
 		addLike: function (type, id) {
 			var self = this;
-			const url = '/main_page/like_' + type + '/' + id;
+			const url = '/ajax/get-like/like_' + type + '/' + id;
 			axios
 				.get(url)
 				.then(function (response) {

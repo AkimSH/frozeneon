@@ -39,6 +39,7 @@ Route::group([
     Route::get('post/{post_id}', [PostController::class, 'getPostByIdAjax']);
     Route::get('logout', [AkmAuthController::class, 'logout']);
     Route::post('add_comment', [CommentController::class, 'storeCommentAjax']);
+    Route::get('get-like/{model_type}/{id}', [HomeController::class, 'getLikeAjax'])->middleware('auth');
 });
 
 Route::get('post/{post_id}', [PostController::class, 'getPostById']);
@@ -47,4 +48,6 @@ Route::group([
     'middleware' => 'auth'
 ], function () {
     Route::post('add_comment', [CommentController::class, 'storeComment']);
+    Route::get('get-like/{model_type}/{id}', [HomeController::class, 'getLike']);
 });
+
