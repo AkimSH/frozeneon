@@ -1,9 +1,4 @@
-<?php
-
-use Model\User_model;
-
-?>
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +10,7 @@ use Model\User_model;
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
 </head>
 <body>
 <div id="app">
@@ -97,16 +93,53 @@ use Model\User_model;
                                     <span>@{{likes}}</span>
                                 </div>
                             </div>
-                            <p class="card-text" v-for="comment in post.coments">
-                                @{{comment.user.personaname + ' - '}}
-                                <small class="text-muted">@{{comment.text}}</small>
-                                <a role="button" @click="addLike('comment', comment.id)">
-                                    <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
-                                    </svg>
-                                    @{{ comment.likes }}
-                                </a>
-                            </p>
+
+
+
+
+                            {{--<div v-for="comment in post.coments">
+                                <p class="card-text">
+                                    @{{comment.user.personaname + ' - '}}
+                                    <small class="text-muted">@{{comment.text}}</small>
+                                    <a role="button" @click="addLike('comment', comment.id)">
+                                        <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+                                        </svg>
+                                        @{{ comment.likes }}
+                                    </a>
+                                </p>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="addComment" v-model="commentText">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" @click="addComment(post.id)">Add comment</button>
+                                </form>
+                                <div v-if="comment.replies">
+
+                                    --}}{{--reply for comment--}}{{--
+                                    <div v-for="replie in comment.replies">
+                                        <p class="card-text">
+                                            @{{replie.user.personaname + ' - '}}
+                                            <small class="text-muted">@{{replie.text}}</small>
+                                            <a role="button" @click="addLike('comment', comment.id)">
+                                                <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+                                                </svg>
+                                                @{{ replie.likes }}
+                                            </a>
+                                        </p>
+
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="addComment" v-model="commentText">
+                                            </div>
+                                            <button type="button" class="btn btn-primary" @click="addComment(post.id)">Add comment</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>--}}
+                            <hr>
                             <form class="form-inline">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="addComment" v-model="commentText">
@@ -115,6 +148,10 @@ use Model\User_model;
                             </form>
                         </div>
                     </div>
+                </div>
+
+                <div class="modal-footer">
+                    <a href="/post/@{{post.id}}" class="btn btn-secondary">Go to comments</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -181,7 +218,7 @@ use Model\User_model;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-<script src="{{ asset('js/app.js') }}?v=12345677"></script>
+<script src="{{ asset('js/app.js') }}?v=123456772556611"></script>
 </body>
 </html>
 

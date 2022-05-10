@@ -77,7 +77,7 @@ var app = new Vue({
 				comment.append('commentText', self.commentText);
 
 				axios.post(
-					'/main_page/comment',
+					'/ajax/add_comment',
 					comment
 				).then(function () {
 
@@ -141,4 +141,3 @@ var app = new Vue({
 		}
 	}
 });
-

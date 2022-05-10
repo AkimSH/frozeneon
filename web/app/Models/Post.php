@@ -15,4 +15,9 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function coments()
+    {
+        return$this->hasMany(Comment::class, 'assign_id')->whereNull('reply_id');
+    }
 }
