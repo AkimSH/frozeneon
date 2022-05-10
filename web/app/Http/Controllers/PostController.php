@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
+
     public function getAllPosts()
     {
         $post = Post::query()
@@ -19,6 +24,20 @@ class PostController extends Controller
         return response()->json(['status' => 'success', 'posts' =>$post->toArray()]);
     }
 
+    public function getPostByIdAjax($post_id)
+    {
+        $post = Post::query()
+            ->where('id', $post_id)
+            ->with(['user' => function ($query) {
+                $query->select('id', 'avatarfull', 'personaname');
+            }])
+            ->with(['coments'])
+            ->first();
+
+
+        return response()->json(['post' => $post]);
+    }
+
     public function getPostById($post_id)
     {
         $post = Post::query()
@@ -26,9 +45,10 @@ class PostController extends Controller
             ->with(['user' => function ($query) {
                 $query->select('id', 'avatarfull', 'personaname');
             }])
+            ->with(['coments'])
             ->first();
 
 
-        return response()->json(['post' => $post]);
+        return view('post', ['post' => $post]);
     }
 }
