@@ -8,7 +8,7 @@
 
                 @if(\Illuminate\Support\Facades\Auth::user())
                 <li class="nav-item">
-                    <a href="ajax/logout" class="btn btn-primary my-2 my-sm-0"
+                    <a href="/ajax/logout" class="btn btn-primary my-2 my-sm-0"
                        data-target="#loginModal">Log out, {{ \Illuminate\Support\Facades\Auth::user()->personaname }}
                     </a>
                 </li>

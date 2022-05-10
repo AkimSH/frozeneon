@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -56,5 +57,33 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class)->latest();
+    }
+
+    public function sendLike()
+    {
+        if ($this->checkLikeBalance()) {
+            return [
+                'status' => false,
+                'message' => 'Not enough balance'
+            ];
+        }
+
+        $this->likes_balance--;
+        $this->save();
+
+        return [
+            'status' => true
+        ];
+    }
+
+    protected function checkLikeBalance():bool
+    {
+        $likes = Auth::user()->likes_balance;
+
+        if ($likes<= 0) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -51,4 +51,12 @@ class PostController extends Controller
 
         return view('post', ['post' => $post]);
     }
+
+    public static function addLike($id):void
+    {
+        $post = Post::where('id', $id)->first();
+
+        $post->likes++;
+        $post->save();
+    }
 }
