@@ -117,6 +117,11 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'monetization' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/monetization.log'),
+        ],
     ],
 
 ];

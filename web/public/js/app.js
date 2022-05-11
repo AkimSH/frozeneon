@@ -94,7 +94,7 @@ var app = new Vue({
 				self.invalidSum = false
 				sum = new FormData();
 				sum.append('sum', self.addSum);
-				axios.post('/main_page/add_money', sum)
+				axios.post('/ajax/add_money', sum)
 					.then(function (response) {
 						setTimeout(function () {
 							$('#addModal').modal('hide');
